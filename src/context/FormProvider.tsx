@@ -3,7 +3,7 @@ import type { Props } from "../types/Props"
 import type { PersonalInfo } from "../types/FormTypes"
 import { FormContext } from "./FormContext"
 
-const FormProvider = ({ children }: Props) => {
+export const FormProvider = ({ children }: Props) => {
     const initialState: PersonalInfo = {
         firstName: "",
         lastName: "",
@@ -28,12 +28,4 @@ const FormProvider = ({ children }: Props) => {
             {children}
         </FormContext.Provider>
     )
-}
-
-export const useFormContext = () => {
-    const context = useContext(FormContext)
-    if (!context) {
-        throw new Error("Form context must be used inside of a provider")
-    }
-    return context
 }

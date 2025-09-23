@@ -9,7 +9,12 @@ const Form_Actions: Form_Actions = {
     Email: "Email",
     Phone: "Phone",
     User_Name: "User_Name",
-    Password: "Password"
+    Password: "Password",
+    Country: "Country",
+    Language: "Language",
+    Newsletter: "Newsletter",
+    Marketing: "Marketing",
+    Terms: "Terms"
 }
 
 export const FormProvider = ({ children }: Props) => {
@@ -19,7 +24,12 @@ export const FormProvider = ({ children }: Props) => {
         email: "",
         phone: "",
         username: "",
-        password: ""
+        password: "",
+        country: 0,
+        language: 0,
+        newsletter: true,
+        marketing: false,
+        terms: false
     }
 
     const formReducer = (
@@ -60,6 +70,35 @@ export const FormProvider = ({ children }: Props) => {
                     ...state,
                     password: action.payload
                 }
+            case Form_Actions.Country:
+                return {
+                    ...state,
+                    country: action.payload
+                }
+            case Form_Actions.Language:
+                return {
+                    ...state,
+                    language: action.payload
+                }
+            case Form_Actions.Newsletter:
+                return {
+                    ...state,
+                    newsletter: action.payload
+                }
+            case Form_Actions.Marketing: {
+                const subscribe: boolean = !state.marketing
+                return {
+                    ...state,
+                    marketing: subscribe
+                }
+            }
+            case Form_Actions.Terms: {
+                const confirmTerms: boolean = !state.terms
+                return {
+                    ...state,
+                    terms: confirmTerms
+                }
+            }
             default:
                 return { ...state }
         }

@@ -1,0 +1,111 @@
+import { countries, languages } from "../../database/database"
+import { useFormContext } from "../../hooks/useFormProvider"
+
+export const Preferences = () => {
+    const { state, dispatch, Form_Actions } = useFormContext()
+    return (
+        <form action="">
+            <h1>Preferences</h1>
+
+            <fieldset>
+                <label htmlFor="countries">Countries</label>
+                <select
+                    value={state.country}
+                    onChange={e =>
+                        dispatch({
+                            type: Form_Actions.Country,
+                            payload: parseInt(e.target.value)
+                        })
+                    }
+                    name="countries"
+                    id="countries"
+                >
+                    <option value="0">Select a country</option>
+                    {countries.map(c => (
+                        <option key={c.id} value={c.id}>
+                            {c.country}
+                        </option>
+                    ))}
+                </select>
+            </fieldset>
+            <fieldset>
+                <label htmlFor="language">Languages</label>
+                <select
+                    value={state.language}
+                    onChange={e =>
+                        dispatch({
+                            type: Form_Actions.Language,
+                            payload: parseInt(e.target.value)
+                        })
+                    }
+                    name="language"
+                    id="language"
+                >
+                    <option value="0">Select a language</option>
+                    {languages.map(l => (
+                        <option key={l.id} value={l.id}>
+                            {l.language}
+                        </option>
+                    ))}
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Join our Newsletter?</legend>
+                <label htmlFor="yes">Yes</label>
+                <input
+                    checked={state.newsletter}
+                    onClick={() =>
+                        dispatch({
+                            type: Form_Actions.Newsletter,
+                            payload: true
+                        })
+                    }
+                    type="radio"
+                    id="yes"
+                    name="newsletter"
+                    value="true"
+                />
+                <label htmlFor="no">No</label>
+                <input
+                    checked={!state.newsletter}
+                    onClick={() =>
+                        dispatch({
+                            type: Form_Actions.Newsletter,
+                            payload: false
+                        })
+                    }
+                    type="radio"
+                    id="no"
+                    name="newsletter"
+                    value="false"
+                />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="marketing">Marketing Emails</label>
+                <input
+                    onClick={() =>
+                        dispatch({
+                            type: Form_Actions.Marketing
+                        })
+                    }
+                    type="checkbox"
+                    id="marketing"
+                    name="marketing"
+                />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="terms">Terms and Conditions</label>
+                <input
+                    onClick={() =>
+                        dispatch({
+                            type: Form_Actions.Terms
+                        })
+                    }
+                    type="checkbox"
+                    id="terms"
+                    name="terms"
+                />
+            </fieldset>
+        </form>
+    )
+}

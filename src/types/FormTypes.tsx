@@ -7,6 +7,11 @@ export interface PersonalInfoType {
     phone: string
     username: string
     password: string
+    country: number
+    language: number
+    newsletter: boolean
+    marketing: boolean
+    terms: boolean
 }
 
 export type Form_Actions = {
@@ -16,11 +21,16 @@ export type Form_Actions = {
     Phone: string
     User_Name: string
     Password: string
+    Country: string
+    Language: string
+    Newsletter: string
+    Marketing: string
+    Terms: string
 }
 
 type FormAction = {
     type: string
-    payload: string
+    payload?: string | number | boolean
 }
 
 export type FormContextType = {

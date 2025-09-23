@@ -13,26 +13,7 @@ export interface PersonalInfoType {
     marketing: boolean
     terms: boolean
 }
-/* 
-export type Form_Numbers_Type = {
-    Country: string
-    Language: string
-}
 
-export type Form_Boolean_Type = {
-    Newsletter: string
-    Marketing: string
-    Terms: string
-}
-
-export type Form_Actions_Type = {
-    First_Name: string
-    Last_Name: string
-    Email: string
-    Phone: string
-    User_Name: string
-    Password: string
-} */
 export const Form_Actions = {
     First_Name: "First_Name",
     Last_Name: "Last_Name",

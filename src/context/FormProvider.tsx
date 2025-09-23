@@ -29,35 +29,35 @@ export const FormProvider = ({ children }: Props) => {
             case Form_Actions.First_Name:
                 return {
                     ...state,
-                    firstName: action.payload
+                    firstName: action.payload as string
                 }
 
             case Form_Actions.Last_Name:
                 return {
                     ...state,
-                    lastName: action.payload
+                    lastName: action.payload as string
                 }
 
             case Form_Actions.Email:
                 return {
                     ...state,
-                    email: action.payload
+                    email: action.payload as string
                 }
 
             case Form_Actions.Phone:
                 return {
                     ...state,
-                    phone: action.payload
+                    phone: action.payload as string
                 }
             case Form_Actions.User_Name:
                 return {
                     ...state,
-                    username: action.payload
+                    username: action.payload as string
                 }
             case Form_Actions.Password:
                 return {
                     ...state,
-                    password: action.payload
+                    password: action.payload as string
                 }
             case Form_Numbers.Country:
                 return {
@@ -88,6 +88,10 @@ export const FormProvider = ({ children }: Props) => {
                     terms: confirmTerms
                 }
             }
+            case Form_Actions.Initial:
+                return {
+                    ...initialState
+                }
             default:
                 return { ...state }
         }

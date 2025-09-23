@@ -1,9 +1,26 @@
+import type React from "react"
 import { countries, languages } from "../../database/database"
 import { useFormContext } from "../../hooks/useFormProvider"
-import { Form_Boolean, Form_Numbers } from "../../types/FormTypes"
+import { Form_Actions, Form_Boolean, Form_Numbers } from "../../types/FormTypes"
+import { useNavigate } from "react-router-dom"
 
 export const Preferences = () => {
     const { state, dispatch } = useFormContext()
+    const navigate = useNavigate()
+
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+
+        if (!state.terms) {
+            window.alert("Agree to our terms and conditions")
+        } else {
+            console.log(state)
+            dispatch({
+                type: Form_Actions.Initial
+            })
+            navigate("/")
+        }
+    }
     return (
         <form action="">
             <h1>Preferences</h1>
@@ -107,6 +124,7 @@ export const Preferences = () => {
                     name="terms"
                 />
             </fieldset>
+            <button onClick={handleSubmit}>Submit</button>
         </form>
     )
 }

@@ -39,7 +39,8 @@ export const Form_Actions = {
     Email: "Email",
     Phone: "Phone",
     User_Name: "User_Name",
-    Password: "Password"
+    Password: "Password",
+    Initial: "Initial"
 } as const
 
 export const Form_Boolean = {
@@ -56,7 +57,7 @@ export const Form_Numbers = {
 export type FormAction =
     | {
           type: (typeof Form_Actions)[keyof typeof Form_Actions]
-          payload: string
+          payload?: string
       }
     | {
           type: (typeof Form_Numbers)[keyof typeof Form_Numbers]

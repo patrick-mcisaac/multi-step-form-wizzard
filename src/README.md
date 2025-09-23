@@ -8,23 +8,22 @@ Build a complete user registration wizard with **3 steps**, full validation, and
 
 ### Step 1: Personal Info
 
--   First Name, Last Name, Email, Phone
--   Email must be valid format
--   Phone must be 10 digits
--   Names minimum 2 characters
+- First Name, Last Name, Email, Phone
+- Email must be valid format
+- Phone must be 10 digits
+- Names minimum 2 characters
 
 ### Step 2: Account Setup
 
--   Username, Password, Confirm Password
--   Username must be unique (simulate API check)
--   Password minimum 8 characters, must include number
--   Passwords must match
+- Username, Password, Confirm Password
+- Password minimum 8 characters, must include number
+- Passwords must match
 
 ### Step 3: Preferences
 
--   Country (dropdown), Language (radio buttons), Newsletter (checkbox)
--   Marketing emails (checkbox), Terms agreement (checkbox)
--   Terms must be accepted to proceed
+- Country (dropdown), Language (radio buttons), Newsletter (checkbox)
+- Marketing emails (checkbox), Terms agreement (checkbox)
+- Terms must be accepted to proceed
 
 ## Core Challenges to Solve
 
@@ -33,26 +32,28 @@ How do you manage form data, validation errors, touched fields, current step, lo
 
 **Validation Brain Teaser:**
 
--   Show errors only AFTER user touches a field
--   Validate entire step before allowing "Next"
--   How do you handle async validation (username check)?
--   Real-time validation vs. step validation
+- Show errors only AFTER user touches a field
+- Validate entire step before allowing "Next"
+- How do you handle async validation (username check)?
+- Real-time validation vs. step validation
 
 **Navigation Logic:**
 
--   Can't go forward with invalid current step
--   Can always go backward
--   Progress bar that updates correctly
--   What happens if user tries to skip steps?
+- Can't go forward with invalid current step
+- Can always go backward
+- Progress bar that updates correctly
+- What happens if user tries to skip steps?
 
 **UX Challenges:**
 
--   Loading states during submission
--   Success/error messages
--   Form reset functionality
--   Step indicators showing completion status
+- Loading states during submission
+- Success/error messages
+- Form reset functionality
+- Step indicators showing completion status
 
 ## Bonus Challenges 🌟
+
+<!-- main focus was to learn useReducer -->
 
 1. **Persistence**: Form survives page refresh (use localStorage simulation)
 2. **Dynamic Steps**: Add a 4th step conditionally based on previous answers
@@ -62,20 +63,20 @@ How do you manage form data, validation errors, touched fields, current step, lo
 
 ## Success Criteria
 
--   ✅ Single `useReducer` manages ALL state
--   ✅ Proper validation with good UX
--   ✅ Smooth step transitions
--   ✅ Loading and success states
--   ✅ Clean, reusable code structure
+- ✅ Single `useReducer` manages ALL state
+- ✅ Proper validation with good UX
+- ✅ Smooth step transitions
+- ✅ Loading and success states
+- ✅ Clean, reusable code structure
 
 ## The Real Test
 
 Can you build this without looking up solutions? The magic is in figuring out:
 
--   How to structure your state object
--   What actions you actually need
--   How to handle complex state transitions
--   When to validate and when to show errors
+- How to structure your state object
+- What actions you actually need
+- How to handle complex state transitions
+- When to validate and when to show errors
 
 **Time Challenge:** Try to complete the basic version in 2-3 hours!
 

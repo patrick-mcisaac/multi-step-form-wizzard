@@ -1,4 +1,4 @@
-import React, { useReducer } from "react"
+import { useReducer } from "react"
 import type { Props } from "../types/Props"
 import {
     Form_Actions,
@@ -27,27 +27,51 @@ export const FormProvider = ({ children }: Props) => {
     const formReducer = (state: PersonalInfoType, action: FormAction) => {
         switch (action.type) {
             case Form_Actions.First_Name:
-                return {
-                    ...state,
-                    firstName: action.payload as string
+                if (action.payload && action.payload.length >= 2) {
+                    return {
+                        ...state,
+                        firstName: action.payload as string
+                    }
+                } else {
+                    return {
+                        ...state
+                    }
                 }
 
             case Form_Actions.Last_Name:
-                return {
-                    ...state,
-                    lastName: action.payload as string
+                if (action.payload && action.payload.length >= 2) {
+                    return {
+                        ...state,
+                        lastName: action.payload as string
+                    }
+                } else {
+                    return {
+                        ...state
+                    }
                 }
 
             case Form_Actions.Email:
-                return {
-                    ...state,
-                    email: action.payload as string
+                if (action.payload?.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    return {
+                        ...state,
+                        email: action.payload as string
+                    }
+                } else {
+                    return {
+                        ...state
+                    }
                 }
 
             case Form_Actions.Phone:
-                return {
-                    ...state,
-                    phone: action.payload as string
+                if (action.payload && action.payload.length === 10) {
+                    return {
+                        ...state,
+                        phone: action.payload as string
+                    }
+                } else {
+                    return {
+                        ...state
+                    }
                 }
             case Form_Actions.User_Name:
                 return {

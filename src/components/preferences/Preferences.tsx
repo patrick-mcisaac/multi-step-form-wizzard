@@ -1,8 +1,9 @@
 import { countries, languages } from "../../database/database"
 import { useFormContext } from "../../hooks/useFormProvider"
+import { Form_Boolean, Form_Numbers } from "../../types/FormTypes"
 
 export const Preferences = () => {
-    const { state, dispatch, Form_Actions } = useFormContext()
+    const { state, dispatch } = useFormContext()
     return (
         <form action="">
             <h1>Preferences</h1>
@@ -13,7 +14,7 @@ export const Preferences = () => {
                     value={state.country}
                     onChange={e =>
                         dispatch({
-                            type: Form_Actions.Country,
+                            type: Form_Numbers.Country,
                             payload: parseInt(e.target.value)
                         })
                     }
@@ -34,7 +35,7 @@ export const Preferences = () => {
                     value={state.language}
                     onChange={e =>
                         dispatch({
-                            type: Form_Actions.Language,
+                            type: Form_Numbers.Language,
                             payload: parseInt(e.target.value)
                         })
                     }
@@ -56,7 +57,7 @@ export const Preferences = () => {
                     checked={state.newsletter}
                     onClick={() =>
                         dispatch({
-                            type: Form_Actions.Newsletter,
+                            type: Form_Boolean.Newsletter,
                             payload: true
                         })
                     }
@@ -70,7 +71,7 @@ export const Preferences = () => {
                     checked={!state.newsletter}
                     onClick={() =>
                         dispatch({
-                            type: Form_Actions.Newsletter,
+                            type: Form_Boolean.Newsletter,
                             payload: false
                         })
                     }
@@ -85,7 +86,7 @@ export const Preferences = () => {
                 <input
                     onClick={() =>
                         dispatch({
-                            type: Form_Actions.Marketing
+                            type: Form_Boolean.Marketing
                         })
                     }
                     type="checkbox"
@@ -98,7 +99,7 @@ export const Preferences = () => {
                 <input
                     onClick={() =>
                         dispatch({
-                            type: Form_Actions.Terms
+                            type: Form_Boolean.Terms
                         })
                     }
                     type="checkbox"

@@ -1,9 +1,10 @@
 import type React from "react"
 import { useFormContext } from "../../hooks/useFormProvider"
 import { useNavigate } from "react-router-dom"
+import { Form_Actions } from "../../types/FormTypes"
 
 export const AccountSetup = () => {
-    const { state, Form_Actions, dispatch } = useFormContext()
+    const { state, dispatch } = useFormContext()
     const navigate = useNavigate()
 
     const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {

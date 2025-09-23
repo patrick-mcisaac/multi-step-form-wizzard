@@ -1,21 +1,13 @@
 import React, { useReducer } from "react"
 import type { Props } from "../types/Props"
-import type { Form_Actions, PersonalInfoType } from "../types/FormTypes"
+import {
+    Form_Actions,
+    Form_Boolean,
+    Form_Numbers,
+    type FormAction,
+    type PersonalInfoType
+} from "../types/FormTypes"
 import { FormContext } from "./FormContext"
-
-const Form_Actions: Form_Actions = {
-    First_Name: "First_Name",
-    Last_Name: "Last_Name",
-    Email: "Email",
-    Phone: "Phone",
-    User_Name: "User_Name",
-    Password: "Password",
-    Country: "Country",
-    Language: "Language",
-    Newsletter: "Newsletter",
-    Marketing: "Marketing",
-    Terms: "Terms"
-}
 
 export const FormProvider = ({ children }: Props) => {
     const initialState: PersonalInfoType = {
@@ -32,10 +24,7 @@ export const FormProvider = ({ children }: Props) => {
         terms: false
     }
 
-    const formReducer = (
-        state: PersonalInfoType,
-        action: { type: string; payload: string }
-    ) => {
+    const formReducer = (state: PersonalInfoType, action: FormAction) => {
         switch (action.type) {
             case Form_Actions.First_Name:
                 return {
@@ -70,29 +59,29 @@ export const FormProvider = ({ children }: Props) => {
                     ...state,
                     password: action.payload
                 }
-            case Form_Actions.Country:
+            case Form_Numbers.Country:
                 return {
                     ...state,
                     country: action.payload
                 }
-            case Form_Actions.Language:
+            case Form_Numbers.Language:
                 return {
                     ...state,
                     language: action.payload
                 }
-            case Form_Actions.Newsletter:
+            case Form_Boolean.Newsletter:
                 return {
                     ...state,
-                    newsletter: action.payload
+                    newsletter: action.payload as boolean
                 }
-            case Form_Actions.Marketing: {
+            case Form_Boolean.Marketing: {
                 const subscribe: boolean = !state.marketing
                 return {
                     ...state,
                     marketing: subscribe
                 }
             }
-            case Form_Actions.Terms: {
+            case Form_Boolean.Terms: {
                 const confirmTerms: boolean = !state.terms
                 return {
                     ...state,
@@ -107,7 +96,7 @@ export const FormProvider = ({ children }: Props) => {
     const [state, dispatch] = useReducer(formReducer, initialState)
     return (
         <FormContext.Provider
-            value={{ initialState, Form_Actions, formReducer, state, dispatch }}
+            value={{ initialState, formReducer, state, dispatch }}
         >
             {children}
         </FormContext.Provider>

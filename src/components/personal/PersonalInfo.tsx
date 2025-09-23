@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useFormContext } from "../../hooks/useFormProvider"
 import type React from "react"
+import { Form_Actions } from "../../types/FormTypes"
 
 export const PersonalInfo = () => {
     const navigate = useNavigate()
@@ -11,7 +12,7 @@ export const PersonalInfo = () => {
     }
     // on button click
     // get context
-    const { Form_Actions, state, dispatch } = useFormContext()
+    const { state, dispatch } = useFormContext()
     return (
         <form>
             <h1>Personal Info</h1>
